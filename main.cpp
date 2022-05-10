@@ -54,11 +54,11 @@ int main()
 		cin >> Array[i]; 
 	}
 
-    cout << Sumf(Array, Count) << endl;
+    cout << "위 숫자들의 합은 " << Sumf(Array, Count) << endl;
     cout <<  "               " << endl;
     cout << "               " << endl;
     cout << "               " << endl;
-    cout << "               " << endl;
+    cout << "위 숫자들을 정렬해봅시다." << endl;
     cout << Arrange(Array, Count) << endl;
 
     delete[] Array;
