@@ -61,7 +61,7 @@ int main()
     cout << "               " << endl;
     cout << Arrange(Array, Count) << endl;
 
-	
+    delete[] Array;
 
 	return 0;
 }
