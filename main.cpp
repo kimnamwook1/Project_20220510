@@ -1,66 +1,88 @@
 #include <iostream>
+#include <conio.h>
+#include <windows.h>
+#include <map>
 
 using namespace std;
 
-int Sumf(int* Array, int Count)
+struct FVector2D
 {
-    int Sum = 0;
+    int X;
+    int Y;
+};
 
-    for (int i = 0; i < Count; ++i)
-    {
-        Sum += Array[i];
-    }
-    return Sum;
-}
-void Arrange(int* Array, int Count)
-{
-    for (int i = 1; i < Count; i++)
-    {
-        int j = 0;
-
-        for (j = i - 1; j >=0; j--)
-        {
-            if (Array[j] > Array[i])
-            {
-                Array[j + 1] = Array[j];
-            }
-            else
-            {
-                break;
-            }
-        }
-        Array[j + 1] = Array[i];
-    }
-    for (int i = 0; i < Count; i++)
-    {
-        cout << Array[i] << endl;
-    }
-}
+void SetLocation(FVector2D NewLocation);
+void Draw();
 
 int main()
-{
-    int Count = 0;
+{      
+    bool bRunning = true;
+    FVector2D PlayerPosition;
+    PlayerPosition.X = 1;
+    PlayerPosition.Y = 1;
 
-    cin >> Count;
-
-    int* Array = nullptr;
-
-    Array = new int[Count];
-
-    for (int i = 0; i < Count; i++)
+   
+    while (bRunning)
     {
-        cin >> Array[i];
+        int KeyCode = _getch();
+
+        switch (KeyCode)
+        {
+        case 'w':
+        case 'W':
+            PlayerPosition.Y--;
+            break;
+        case 's':
+        case 'S':
+            PlayerPosition.Y++;
+            break;
+        case 'a':
+        case 'A':
+            PlayerPosition.X--;
+            break;
+        case 'd':
+        case 'D':
+            PlayerPosition.X++;
+            break;
+        case 27:
+            bRunning = false;
+            break;
+
+        }
+
+        PlayerPosition.X = PlayerPosition.X < 1 ? 1 : PlayerPosition.X;
+        PlayerPosition.Y = PlayerPosition.Y < 1 ? 1 : PlayerPosition.Y;
+        PlayerPosition.X = PlayerPosition.X > 9 ? 9 : PlayerPosition.X;
+        PlayerPosition.Y = PlayerPosition.Y > 9 ? 9 : PlayerPosition.Y;
+
+        system("cls");
+
+        cout << "##########" << endl;
+        cout << "#        #" << endl;
+        cout << "#        #" << endl;
+        cout << "#        #" << endl;
+        cout << "#        #" << endl;
+        cout << "#        #" << endl;
+        cout << "#        #" << endl;
+        cout << "#        #" << endl;
+        cout << "#        #" << endl;
+        cout << "##########" << endl;
+
+        SetLocation(PlayerPosition);
+       
+            cout << "P";
+   
     }
 
-    cout << "위 숫자들의 합은 " << Sumf(Array, Count) << endl;
-    cout << "                 " << endl;
-    cout << "위 숫자들을 정렬해봅시다." << endl;
-
-    Arrange(Array, Count);
-
-    delete[] Array;
-
-    Array = nullptr;
 
     return 0;
+}
+
+
+void SetLocation(FVector2D NewLocation)
+{
+    COORD Cur;
+    Cur.X = NewLocation.X;
+    Cur.Y = NewLocation.Y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
 }
