@@ -13,7 +13,6 @@ int Sumf(int* Array, int Count)
     return Sum;
 }
 
-
 int Arrange(int* Array, int Count)
 {
     for (int i = 1; i < Count; i++)
@@ -45,9 +44,11 @@ int Arrange(int* Array, int Count)
 int main()
 {
     int Count = 0;
+
 	cin >> Count;
 	
     int* Array = nullptr;
+    
     Array = new int[Count];
 
 	for (int i = 0; i < Count; i++)
@@ -56,8 +57,6 @@ int main()
 	}
 
     cout << "위 숫자들의 합은 " << Sumf(Array, Count) << endl;
-    cout <<  "               " << endl;
-    cout << "               " << endl;
     cout << "               " << endl;
     cout << "위 숫자들을 정렬해봅시다." << endl;
     cout << Arrange(Array, Count) << endl;
