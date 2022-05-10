@@ -22,7 +22,7 @@ int Arrange(int* Array, int Count)
 
         for (j = i-1; j < Count - 1  ; j++)
         {
-            if (Array[j] < Array[j + 1])
+            if (Array[j] > Array[j + 1])
             {
                 int Temp = 0;
                 Temp = Array[j + 1];
