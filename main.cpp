@@ -47,7 +47,8 @@ int main()
     int Count = 0;
 	cin >> Count;
 	
-	int* Array = new int[Count];
+    int* Array = nullptr;
+    Array = new int[Count];
 
 	for (int i = 0; i < Count; i++)
 	{
@@ -62,6 +63,7 @@ int main()
     cout << Arrange(Array, Count) << endl;
 
     delete[] Array;
+    Array = nullptr;
 
 	return 0;
 }
