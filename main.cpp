@@ -14,6 +14,23 @@ struct FVector2D
 void SetLocation(FVector2D NewLocation);
 void Draw();
 
+
+string Tile[] = { " ","#" };
+
+int MAP[10][10] = {
+
+      {1, 1, 1,  1,  1,  1,  1,  1,  1 ,1},  // 0
+      {1, 0, 0,  0,  0,  0,  0,  0,  0 ,1},  // 1
+      {1, 0, 0,  0,  0,  0,  0,  0,  0 ,1},  // 2
+      {1, 0, 0,  0,  0,  0,  0,  0,  0 ,1},  // 3
+      {1, 0, 0,  0,  0,  0,  0,  0,  0 ,1},  // 4
+      {1, 0, 0,  0,  0,  0,  0,  0,  0 ,1},  // 5
+      {1, 0, 0,  0,  0,  0,  0,  0,  0 ,1},  // 6
+      {1, 0, 0,  0,  0,  0,  0,  0,  0 ,1},  // 7
+      {1, 0, 0,  0,  0,  0,  0,  0,  0 ,1},  // 8
+      {1, 1, 1,  1,  1,  1,  1,  1,  1 ,1}   // 9
+};
+
 int main()
 {      
     bool bRunning = true;
@@ -57,24 +74,12 @@ int main()
 
         system("cls");
 
-        cout << "##########" << endl;
-        cout << "#        #" << endl;
-        cout << "#        #" << endl;
-        cout << "#        #" << endl;
-        cout << "#        #" << endl;
-        cout << "#        #" << endl;
-        cout << "#        #" << endl;
-        cout << "#        #" << endl;
-        cout << "#        #" << endl;
-        cout << "##########" << endl;
+        Draw();
 
         SetLocation(PlayerPosition);
        
-            cout << "P";
-   
+            cout << "P";  
     }
-
-
     return 0;
 }
 
@@ -85,4 +90,23 @@ void SetLocation(FVector2D NewLocation)
     Cur.X = NewLocation.X;
     Cur.Y = NewLocation.Y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
+}
+
+void Draw()
+{
+    for (int i = 0; i < 10; i++) {
+
+        for (int j = 0; j < 10; j++) {
+
+            if (MAP[j][i] == 1)
+            {
+                cout << Tile[1];
+            }
+            else
+            {
+                cout << Tile[0];
+            }
+        }
+  
+    }
 }
